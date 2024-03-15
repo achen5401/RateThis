@@ -1,0 +1,480 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-y: auto; /* Enable vertical scrolling for the entire page */
+}
+
+header {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: center;
+}
+
+#ad-container {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#ad-image {
+  height: 90px; /* Set the height to match the ad unit */
+  width: auto; /* Maintain aspect ratio */
+  margin-left: 10px;
+  margin-right: 10px; /* Add space between image and ad unit */
+}
+
+#ad-unit-728x90 {
+  width: 728px;
+  height: 90px;
+  background-color: #e6e6e6;
+}
+
+#nav-bar {
+  width: 838px;
+  height: 55px;
+  background-color: green;
+}
+
+#auth-bar {
+  width: 400px;
+  height: 55px;
+  background-color: rgb(156, 202, 170);
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+#auth-bar-user {
+  width: 100px;
+  margin: 5px;
+  padding: 10px;
+  text-align: center; /* Center the text */
+  font-size: 24px;
+}
+
+#auth-bar-dropdown {
+  width: 55px;
+  margin: 5px;
+  text-align: center; /* Center the text */
+  font-size: 30px;
+}
+
+#content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+#popular-images {
+  flex: 1;
+  max-width: 50%;
+}
+
+.swipeable-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-item {
+  width: 100%;
+  display: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item.active {
+  display: block;
+  transform: translateX(0);
+}
+
+.carousel__image-container {
+  width: 100%; /* Adjust the maximum width as needed */
+  height: 450px; /* Adjust the height as needed */
+  overflow: hidden; /* Ensures the image doesn't overflow its container */
+  margin: 0 auto; /* Centers the image container */
+}
+
+.carousel__img {
+  width: auto;
+  height: 100%;
+}
+
+#recent-images {
+  flex: 1;
+  max-width: 30%;
+}
+
+.recent-cards {
+  width: 100%;
+}
+
+.recent-cards__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.recent-cards__item {
+  display: flex;
+  align-items: center;
+  max-height: 100px;
+  overflow: hidden;
+  border: 1px solid #ccc; /* Add outline */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  padding: 10px; /* Optional: Add padding */
+}
+
+.recent-cards__img {
+  width: auto;
+  height: 100%;
+  max-width: 150px; /* Adjust according to your preference */
+}
+
+.recent-cards__title {
+  margin-left: 20px;
+  font-size: 18px; /* Adjust according to your preference */
+  font-weight: bold;
+}
+
+#ad-unit-300x600 {
+  width: 300px;
+  height: 600px;
+  background-color: #e6e6e6;
+  margin-left: 20px;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+}
+
+.modal input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.loginButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.loginButton:hover {
+  background-color: #0056b3;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-header button {
+  width: 10%;
+  background-color: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-header button:hover {
+  background-color: gray;
+}
+
+
+.modal span {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.modal span:hover {
+  text-decoration: underline;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.google-button {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.google-button:hover {
+  background-color: #357ae8;
+}
+
+/* Add some basic styling to the navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #3498db; /* You can change the background color */
+  color: white;
+}
+
+/* Style the logo */
+.logo img {
+  max-width: 100px; /* Adjust the max-width as needed */
+}
+
+/* Style the login button */
+.login button {
+  padding: 10px 20px;
+  background-color: #2ecc71; /* You can change the background color */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.login button:hover {
+  background-color: #27ae60; /* Change the hover background color */
+}
+
+.login .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.login .dropdown .dropbtn {
+  background-color: #2ecc71; /* Change button background color */
+  color: white;
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none;
+  cursor: pointer;
+}
+
+.login .dropdown .dropbtn:hover {
+  background-color: #1abc9c; /* Change button background color on hover */
+}
+
+.login .dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9; /* Change dropdown background color */
+  min-width: 160px;
+  z-index: 1;
+  right: 0; /* Align dropdown items to the right */
+}
+
+.login .dropdown .dropdown-content a {
+  color: black;
+  padding: 12px 16px; /* Adjust padding as needed */
+  text-decoration: none;
+  display: block;
+  text-align: right; /* Align text to the right */
+}
+
+.login .dropdown .dropdown-content a:hover {
+  background-color: #ddd; /* Change background color on hover */
+}
+
+.login .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.new-card-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.new-card-container h2 {
+  margin-top: 0;
+}
+
+.new-card-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-card-container label {
+  margin-bottom: 5px;
+}
+
+.new-card-container input[type="text"],
+.new-card-container input[type="file"],
+.new-card-container textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.new-card-container select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.new-card-container button[type="submit"],
+.new-card-container button[type="button"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.new-card-container button[type="submit"]:hover,
+.new-card-container button[type="button"]:hover {
+  background-color: #0056b3;
+}
+
+.new-card-container .tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.new-card-container .tag-list .tag-item {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.new-card-container .tag-list .tag-item:hover {
+  background-color: #0056b3;
+}
+
+.new-card-container .tag-input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.new-card-container .tag-input-container input {
+  flex-grow: 1;
+  padding: 8px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.new-card-container .tag-input-container button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.new-card-container .tag-input-container button:hover {
+  background-color: #0056b3;
+}
+
+.view-cards {
+  display: flex;
+  justify-content: center;
+}
+
+.view-cards__list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+  gap: 30px; /* Increased gap between cards */
+}
+
+.view-cards__item {
+  position: relative; /* Position relative for positioning the button */
+  text-align: center;
+  max-width: 220px; /* Maximum width for each card */
+  max-height: 320px; /* Maximum height for each card */
+  overflow: hidden; /* Ensure content doesn't overflow */
+  border: 2px solid #ccc; /* Add a solid border */
+  border-radius: 5px;
+  padding: 10px; /* Add padding to the card box */
+}
+
+.view-cards__img {
+  width: 100%; /* Make images fill their containers */
+  height: auto;
+  border-radius: 3px; /* Slightly adjust border radius for image */
+}
+
+.view-cards__title {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.view-cards__description {
+  margin-bottom: 10px; /* Add space between title and description */
+}
+
+.view-cards__metadata {
+  font-size: 14px; /* Adjust font size for metadata */
+}
+
+.view-cards__metadata p {
+  margin: 5px 0; /* Add space between metadata items */
+}
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}

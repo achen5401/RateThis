@@ -13,7 +13,7 @@ function HomeScreen() {
     <div className="App">
 
       <div id="content">
-        <div id="popular-images">Most PopularTTT
+        <div id="popular-images">Most Popular
           {<Carousel/>/* Swipeable popular images with description and tags go here */}
         </div>
 

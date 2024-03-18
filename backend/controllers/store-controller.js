@@ -4,7 +4,7 @@ const upload = multer({ dest: 'uploads/' });
 const Card = require('../models/card-model');
 const User = require('../models/user-model');
 
-const fs = require('fs');
+//const fs = require('fs');
 const { ImgurClient } = require('imgur');
 const client = new ImgurClient({ clientId: process.env.CLIENT_ID });
 

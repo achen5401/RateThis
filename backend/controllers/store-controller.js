@@ -8,37 +8,50 @@ const fs = require('fs');
 const { ImgurClient } = require('imgur');
 const client = new ImgurClient({ clientId: process.env.CLIENT_ID });
 
+const cloudinary = require('cloudinary').v2;
+          
+cloudinary.config({ 
+  cloud_name: 'dias6f7s6', 
+  api_key: '699684633821569', 
+  api_secret: 'b97LZhu3XsnIeDVl_SEHf4LF3gs' 
+});
+
 const newCard = async (req, res) => {
-    console.log(req.body);
-    console.log(req.file);
-    body = req.body;
-    console.log(req.userId);
     try {
         const user = await User.findOne({ _id: req.userId });
+        console.log("body", req.body);
+        console.log("buffer", req.file.buffer);
         if (user) {
-            const response = await client.upload({
-                image: fs.createReadStream(req.file.path),
-                type: 'stream'
+            const uploadedImage = await cloudinary.uploader.upload_stream({
+                resource_type: "image",
+                folder: "your_folder_name" // Optional: Specify the folder where you want to store the images
+            }, async (error, result) => {
+                if (error) {
+                    console.error("Error uploading image to Cloudinary:", error);
+                    return res.status(500).json({ message: "Error uploading image to Cloudinary" });
+                } else {
+                    console.log("Image uploaded successfully to Cloudinary:", result.url);
+                    const body = req.body;
+                    console.log(body.tags);
+                    const newCard = new Card({
+                        title: body.title,
+                        ownerUsername: body.ownerUsername,
+                        image: result.url,
+                        websiteLink: body.websiteLink,
+                        likes: 0,
+                        dislikes: 0,
+                        description: body.description,
+                        tags: body.tags
+                    });
+                    user.cards.push(newCard._id);
+                    await user.save(); // Ensure user.save() and newCard.save() are awaited
+                    await newCard.save();
+                    // Send success response
+                    return res.status(200).json({ message: "Card created successfully" });
+                }
             });
-            console.log("success");
-            console.log(response.data.link);
-            const body = req.body;
-            console.log(body.tags);
-            const newCard = new Card({
-                title: body.title,
-                ownerUsername: body.ownerUsername,
-                image: response.data.link,
-                websiteLink: body.websiteLink,
-                likes: 0,
-                dislikes: 0,
-                description: body.description,
-                tags: body.tags
-            });
-            user.cards.push(newCard._id);
-            await user.save(); // Ensure user.save() and newCard.save() are awaited
-            await newCard.save();
-            // Send success response
-            return res.status(200).json({ message: "Card created successfully" });
+            // Pipe the file buffer directly to the upload stream
+            uploadedImage.end(req.file.buffer);
         } else {
             console.log("failure");
             // Send failure response

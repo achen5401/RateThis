@@ -4,7 +4,7 @@ const router = express.Router()
 const auth = require('../auth')
 const multer = require('multer');
 
-const upload = multer({ dest: 'images/'});
+const upload = multer({ storage: multer.memoryStorage() });
 
 router.post('/new_card', auth.verify, upload.single('image'), StoreController.newCard);
 router.get('/load_cards', StoreController.loadCards);

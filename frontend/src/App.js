@@ -16,7 +16,6 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar/>
-      test
       <Routes>
         <Route path = "/" element = {<HomeScreen/>}/>
         <Route path = "/new-card" element = {<NewCardScreen/>}/>

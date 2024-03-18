@@ -10,7 +10,8 @@ const port = 4000;
 
 app.use(express.urlencoded({ extended: true }))
 app.use(cors({
-    origin: ["http://localhost:3000"],
+    //origin: ["http://localhost:3000"],
+    origin: ["https://rate-this-hazel.vercel.app"],
     credentials: true
 }))
 app.use(express.json())

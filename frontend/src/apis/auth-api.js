@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const instance = axios.create({
   //baseURL: 'http://localhost:4000/auth', // Replace this with your backend API base URL
-  baseURL: 'https://rate-this-api.vercel.app/auth',
+  baseURL: 'https://ratethis-backend.onrender.com/auth',
   timeout: 10000, // Adjust timeout as needed
 });
 

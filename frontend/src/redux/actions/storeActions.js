@@ -3,7 +3,7 @@ export const load_cards = (cards) => ({
   payload: cards
 })
 
-export const update_card = (card) => ({
-  type: 'UPDATE_CARD',
+export const edit_card = (card) => ({
+  type: 'EDIT_CARD',
   payload: card
 })

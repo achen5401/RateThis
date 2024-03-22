@@ -13,7 +13,7 @@ const NewCardScreen = () => {
     const [likes, setLikes] = useState(0);
     const [dislikes, setDislikes] = useState(0);
 
-    const username = useSelector((state) => state.auth.username);
+    const email = useSelector((state) => state.auth.email);
     const navigate = useNavigate();
 
     const handleImageUpload = (event) => {
@@ -27,7 +27,7 @@ const NewCardScreen = () => {
         try {
             const formData = new FormData();
             formData.append('title', title);
-            formData.append('ownerUsername', username);
+            formData.append('ownerEmail', email);
             formData.append('image', image);
             formData.append('websiteLink', websiteLink);
             formData.append('description', description);

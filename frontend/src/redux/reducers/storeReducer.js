@@ -1,5 +1,6 @@
 const initialState = {
-    cards: null
+    cards: null,
+    cardToEdit: null 
   };
   
   const storeReducer = (state = initialState, action) => {
@@ -9,6 +10,11 @@ const initialState = {
           ...state,
           cards: action.payload,
         };
+      case 'EDIT_CARD':
+        return {
+          ...state,
+          cardToEdit: action.payload
+        }
       default:
         return state;
     }

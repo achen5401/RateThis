@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+axios.defaults.withCredentials = true;
 
 const instance = axios.create({
   //baseURL: 'http://localhost:4000/auth', // Replace this with your backend API base URL
@@ -9,8 +9,11 @@ const instance = axios.create({
 
 // Define functions for making API requests
 const api = {
-  login: (username, password) => instance.post('/login', { username, password }),
-  register: (email, username, password) => instance.post('/register', { email, username, password }),
+  login: (email, password) => instance.post('/login', { email, password }),
+  register: (firstName, lastName, email, password) => instance.post('/register', { firstName, lastName, email, password }),
+  googleSignIn: (firstName, lastName, email) => instance.post('/googleSignIn', {firstName, lastName, email}),
+  isLoggedIn: () => instance.get('/isLoggedIn'), 
+  logout: () => instance.get('/logout')
 };
 
 export default api;

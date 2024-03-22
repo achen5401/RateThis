@@ -2,18 +2,21 @@ import React, { useState, useEffect } from 'react';
 import api from '../apis/store-api';
 import { load_cards, delete_card } from '../redux/actions/storeActions';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { edit_card } from '../redux/actions/storeActions';
 
 const ViewCards = () => {
     const [recentCards, setRecentCards] = useState([]);
     const dispatch = useDispatch();
-    const username = useSelector((state) => state.auth.username);
+    const navigate = useNavigate();
+    const email = useSelector((state) => state.auth.email);
 
     useEffect(() => {
         const loadCards = async () => {
             try {
                 const response = await api.load_all_cards();
                 dispatch(load_cards(response.data));
-                const filteredCards = response.data.filter(card => card.ownerUsername === username);
+                const filteredCards = response.data.filter(card => card.ownerEmail === email);
                 const sortedCards = filteredCards.slice().sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
                 setRecentCards(sortedCards.reverse()); // Reverse the order to sort from newest to oldest
             } catch (error) {
@@ -21,7 +24,12 @@ const ViewCards = () => {
             }
         };
         loadCards();
-    }, [dispatch, username]);
+    }, [dispatch, email]);
+
+    const handleEdit = async (card) => {
+        dispatch(edit_card(card));
+        navigate('/edit-card');
+    }
 
     const handleDelete = async (id) => {
         try {
@@ -38,7 +46,10 @@ const ViewCards = () => {
                 {recentCards.map((card, index) => (
                     <div key={index} className="view-cards__item">
                         {(!card.likes && !card.dislikes) && (
+                            <div>
+                            <button className="edit-button" onClick={() => handleEdit(card)}>Edit</button>
                             <button className="delete-button" onClick={() => handleDelete(card._id)}>X</button>
+                            </div>
                         )}
                         <span className="view-cards__title">{card.title}</span>
                         <img src={card.image} alt={`Card ${index}`} className="view-cards__img" />

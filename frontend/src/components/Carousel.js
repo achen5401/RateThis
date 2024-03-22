@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../apis/store-api';
 import { load_cards } from '../redux/actions/storeActions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -105,11 +105,14 @@ const Carousel = () => {
     <div className="carousel">
       <div className="carousel__content">
         <div className="carousel__image-container">
+          {images[activeIndex] ?
           <img
             src={images[activeIndex]}
             alt={`Slide ${activeIndex}`}
             className="carousel__img"
-          />
+          /> :
+          "All images viewed"
+          }
         </div>
         <div className="carousel__description">
           <p>Description: {descriptions[activeIndex]}</p>
@@ -118,19 +121,19 @@ const Carousel = () => {
           )}
         </div>
         <div className="carousel__buttons">
-          <button onClick={handleDislike} className="carousel__btn carousel__btn--dislike">
+          <button onClick={handleDislike} disabled={!images[activeIndex]} className="carousel__btn carousel__btn--dislike">
             Not
           </button>
-          <button onClick={handleLike} className="carousel__btn carousel__btn--like">
+          <button onClick={handleLike} disabled={!images[activeIndex]} className="carousel__btn carousel__btn--like">
             Hot
           </button>
         </div>
       </div>
       <div className="carousel__nav">
-        <button onClick={prevSlide} className="carousel__nav-btn carousel__nav-btn--prev">
+        <button onClick={prevSlide} disabled={!images[activeIndex]} className="carousel__nav-btn carousel__nav-btn--prev">
           &lt;
         </button>
-        <button onClick={nextSlide} className="carousel__nav-btn carousel__nav-btn--next">
+        <button onClick={nextSlide} disabled={!images[activeIndex]} className="carousel__nav-btn carousel__nav-btn--next">
           &gt;
         </button>
       </div>

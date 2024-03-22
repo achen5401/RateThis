@@ -3,18 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toggleLoginModal } from '../redux/actions/modalActions';
 import { logout } from '../redux/actions/authActions';
+import api from '../apis/auth-api';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const username = useSelector((state) => state.auth.username);
+  const firstName = useSelector((state) => state.auth.firstName);
 
   function openLoginSignupModal() {
     dispatch(toggleLoginModal());
   }
 
-  function handleLogout() {
+  async function handleLogout() {
+    const response = await api.logout();
     dispatch(logout());
     navigate("/");
   }
@@ -40,10 +42,10 @@ const Navbar = () => {
       <div className="login">
         {isLoggedIn ? (
           <div className="dropdown">
-            <button className="dropbtn">Hi {username} &#9660;</button>
+            <button className="dropbtn">Hi {firstName} &#9660;</button>
             <div className="dropdown-content">
               <a onClick={handleNewCard}>New Card</a>
-              <a onClick={handleViewCards}>View Cards</a>
+              <a onClick={handleViewCards}>My Cards</a>
               <a onClick={handleLogout}>Logout</a>
             </div>
           </div>

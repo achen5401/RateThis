@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const CardSchema = new Schema(
     {
         title: { type: String, required: true },
-        ownerUsername: {type: String, required: true},
+        ownerEmail: {type: String, required: true},
         image: { type: String },
         websiteLink: { type: String },
         likes: {type: Number, required: true},

@@ -33,6 +33,7 @@ function authManager() {
     verifyUser = (req) => {
         try {
             const token = req.cookies.token;
+            console.log("token", token);
             if (!token) {
                 return null;
             }

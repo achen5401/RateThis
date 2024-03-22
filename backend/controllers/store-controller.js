@@ -32,13 +32,13 @@ const newCard = async (req, res) => {
                     console.log(body.tags);
                     const newCard = new Card({
                         title: body.title,
-                        ownerUsername: body.ownerUsername,
+                        ownerEmail: body.ownerEmail,
                         image: result.url,
                         websiteLink: body.websiteLink,
                         likes: 0,
                         dislikes: 0,
                         description: body.description,
-                        tags: body.tags
+                        tags: body.tags.split(',')
                     });
                     user.cards.push(newCard._id);
                     await user.save(); // Ensure user.save() and newCard.save() are awaited
@@ -78,7 +78,7 @@ const updateCard = async(req, res) => {
         const card = await Card.findOne({ _id: req.body._id });
         if (card) {
             card.title = req.body.title;
-            card.ownerUsername = req.body.ownerUsername;
+            card.ownerEmail = req.body.ownerEmail;
             card.image = req.body.image;
             card.websiteLink = req.body.websiteLink;
             card.likes = req.body.likes;

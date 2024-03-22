@@ -226,25 +226,16 @@ footer {
   justify-content: flex-end;
 }
 
+.google-sign-in-container {
+  display: flex;
+  justify-content: center;
+}
+
 .close-button {
   background: none;
   border: none;
   cursor: pointer;
   font-size: 18px;
-}
-
-.google-button {
-  background-color: #4285f4;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
-
-.google-button:hover {
-  background-color: #357ae8;
 }
 
 /* Add some basic styling to the navbar */
@@ -472,9 +463,124 @@ footer {
   position: absolute;
   top: 5px;
   right: 5px;
-  background-color: transparent;
   border: none;
-  color: red;
+  color: black;
   font-weight: bold;
   cursor: pointer;
+}
+
+.view-cards__item .edit-button {
+  position: absolute;
+  top: 7px;
+  left: 5px;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-card-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.edit-card-container h2 {
+  margin-top: 0;
+}
+
+.edit-card-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-card-container label {
+  margin-bottom: 5px;
+}
+
+.edit-card-container input[type="text"],
+.edit-card-container input[type="file"],
+.edit-card-container textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.edit-card-container select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.edit-card-container button[type="submit"],
+.edit-card-container button[type="button"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.edit-card-container button[type="submit"]:hover,
+.edit-card-container button[type="button"]:hover {
+  background-color: #0056b3;
+}
+
+.edit-card-container .tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.edit-card-container .tag-list .tag-item {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.edit-card-container .tag-list .tag-item:hover {
+  background-color: #0056b3;
+}
+
+.edit-card-container .tag-input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.edit-card-container .tag-input-container input {
+  flex-grow: 1;
+  padding: 8px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.edit-card-container .tag-input-container button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-card-container .tag-input-container button:hover {
+  background-color: #0056b3;
 }

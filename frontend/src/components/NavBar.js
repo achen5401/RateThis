@@ -37,7 +37,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="logo">
         {/* Your logo image or text goes here */}
-        <img src="logo.png" alt="Logo" onClick={handleHome}/>
+        <img src="logo.png" alt="Logo/Home" onClick={handleHome}/>
       </div>
       <div className="login">
         {isLoggedIn ? (

@@ -145,6 +145,11 @@ async function logoutUser(req, res) {
         try {
             return res
                 .clearCookie("token")
+                .cookie("token", "", {
+                    httpOnly: true,
+                    secure: true,
+                    sameSite: "none"
+                })
                 .status(200)
                 .json({
                     loggedIn: false,

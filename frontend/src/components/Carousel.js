@@ -111,7 +111,7 @@ const Carousel = () => {
             alt={`Slide ${activeIndex}`}
             className="carousel__img"
           /> :
-          "All images viewed"
+          "Images loading..."
           }
         </div>
         <div className="carousel__description">

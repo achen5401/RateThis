@@ -428,7 +428,7 @@ footer {
   position: relative; /* Position relative for positioning the button */
   text-align: center;
   max-width: 220px; /* Maximum width for each card */
-  max-height: 320px; /* Maximum height for each card */
+  height: 320px; /* Maximum height for each card */
   overflow: hidden; /* Ensure content doesn't overflow */
   border: 2px solid #ccc; /* Add a solid border */
   border-radius: 5px;

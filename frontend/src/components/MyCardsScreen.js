@@ -33,12 +33,16 @@ const ViewCards = () => {
 
     const handleDelete = async (id) => {
         try {
-          await api.delete_card(id);
-          setRecentCards(recentCards.filter(card => card._id !== id)); // Use card._id instead of card.id
+            await api.delete_card(id);
+            setRecentCards(recentCards.filter(card => card._id !== id)); // Use card._id instead of card.id
         } catch (error) {
-          console.error('Error deleting card', error);
+            console.error('Error deleting card', error);
         }
-      };
+    };
+
+    const handleNewCardClick = () => {
+        navigate('/new-card');
+    };
 
     return (
         <div className="view-cards" style={{ marginTop: '20px', marginBottom: '20px' }}>
@@ -47,8 +51,8 @@ const ViewCards = () => {
                     <div key={index} className="view-cards__item">
                         {(!card.likes && !card.dislikes) && (
                             <div>
-                            <button className="edit-button" onClick={() => handleEdit(card)}>Edit</button>
-                            <button className="delete-button" onClick={() => handleDelete(card._id)}>X</button>
+                                <button className="edit-button" onClick={() => handleEdit(card)}>Edit</button>
+                                <button className="delete-button" onClick={() => handleDelete(card._id)}>X</button>
                             </div>
                         )}
                         <span className="view-cards__title">{card.title}</span>
@@ -61,6 +65,9 @@ const ViewCards = () => {
                         </div>
                     </div>
                 ))}
+                <div key="new-card" className="view-cards__item" style={{ cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center' }} onClick={handleNewCardClick}>
+                <span style={{ fontSize: '48px' }}>+</span>
+            </div>
             </div>
         </div>
     );
